@@ -1,9 +1,9 @@
-// import type { NextPage } from "next";
+import type { NextPage } from 'next';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
 
-import { allPostsNewToOld, Post } from "@/lib/contentLayerAdapter";
+import { allPostsNewToOld, Post } from '@/lib/contentLayerAdapter';
 import styles from '@/styles/Home.module.css';
 
 export function getStaticProps() {
@@ -11,13 +11,13 @@ export function getStaticProps() {
   return { props: { posts } };
 }
 
-// type Props = {
-//   posts: Post[];
-// };
+type Props = {
+  posts: Post[];
+};
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home({ posts }) {
+const Home: NextPage<Props> = ({ posts }) => {
   return (
     <>
       <Head>
@@ -140,4 +140,6 @@ export default function Home({ posts }) {
       </main>
     </>
   );
-}
+};
+
+export default Home;
