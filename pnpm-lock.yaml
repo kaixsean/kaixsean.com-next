@@ -10,6 +10,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.35.1
   '@typescript-eslint/parser': ^5.35.1
   autoprefixer: ^10.4.13
+  clsx: ^1.2.1
   contentlayer: ^0.3.0
   date-fns: ^2.29.3
   esbuild: ^0.17.10
@@ -40,6 +41,7 @@ specifiers:
 dependencies:
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
+  clsx: 1.2.1
   contentlayer: 0.3.0_esbuild@0.17.10
   date-fns: 2.29.3
   eslint-config-next: 13.2.1_ycpbpc6yetojsgtrx3mwntkhsu
@@ -1765,6 +1767,11 @@ packages:
       string-width: 4.2.3
       strip-ansi: 6.0.1
       wrap-ansi: 7.0.0
+    dev: false
+
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
     dev: false
 
   /color-convert/1.9.3:
