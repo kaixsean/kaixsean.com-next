@@ -1,12 +1,23 @@
+// import type { NextPage } from "next";
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
 
+import { allPostsNewToOld, Post } from "@/lib/contentLayerAdapter";
 import styles from '@/styles/Home.module.css';
+
+export function getStaticProps() {
+  const posts = allPostsNewToOld;
+  return { props: { posts } };
+}
+
+// type Props = {
+//   posts: Post[];
+// };
 
 const inter = Inter({ subsets: ['latin'] });
 
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <>
       <Head>
@@ -117,6 +128,14 @@ export default function Home() {
               with&nbsp;Vercel.
             </p>
           </a>
+        </div>
+        <div className={styles.grid}>
+          {posts.map((post) => (
+            <a key={post.slug} href={post.path} className={styles.card}>
+              <h2>{post.title}</h2>
+              <p>{post.description}</p>
+            </a>
+          ))}
         </div>
       </main>
     </>
