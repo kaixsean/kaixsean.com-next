@@ -46,7 +46,7 @@ const PostPage: NextPage<Props> = ({ post }) => {
         <h1>{post.title}</h1>
 
         <time dateTime={post.date}>
-          {format(parseISO(post.date), "LLLL d, yyyy")}
+          {format(parseISO(post.date), 'LLLL d, yyyy')}
         </time>
 
         <MDXContent />
