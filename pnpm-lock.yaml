@@ -37,6 +37,7 @@ specifiers:
   prettier-plugin-tailwindcss: ^0.2.3
   react: 18.2.0
   react-dom: 18.2.0
+  sass: ^1.58.3
   tailwindcss: ^3.2.7
   typescript: 4.9.5
 
@@ -47,7 +48,7 @@ dependencies:
   contentlayer: 0.3.0_esbuild@0.17.10
   date-fns: 2.29.3
   eslint-config-next: 13.2.1_ycpbpc6yetojsgtrx3mwntkhsu
-  next: 13.2.1_6m24vuloj5ihw4zc5lbsktc4fu
+  next: 13.2.1_4pgn6omj4irpgog4tpnzary34q
   next-contentlayer: 0.3.0_2n3xkwvedpxjmjciwtj5jdt634
   next-themes: 0.2.1_qgtcjgzkkjtbiyvnx7d32fl5vu
   react: 18.2.0
@@ -79,6 +80,7 @@ devDependencies:
   postcss: 8.4.21
   prettier: 2.8.4
   prettier-plugin-tailwindcss: 0.2.3_prettier@2.8.4
+  sass: 1.58.3
   tailwindcss: 3.2.7_postcss@8.4.21
   typescript: 4.9.5
 
@@ -4358,6 +4360,9 @@ packages:
     engines: {node: '>=14.0.0'}
     dev: false
 
+  /immutable/4.2.4:
+    resolution: {integrity: sha512-WDxL3Hheb1JkRN3sQkyujNlL/xRjAo3rJtaU5xeufUauG66JdMr32bLj4gF+vWl84DIA3Zxw7tiAjneYzRRw+w==}
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -5229,7 +5234,7 @@ packages:
     dependencies:
       '@contentlayer/core': 0.3.0_esbuild@0.17.10
       '@contentlayer/utils': 0.3.0
-      next: 13.2.1_6m24vuloj5ihw4zc5lbsktc4fu
+      next: 13.2.1_4pgn6omj4irpgog4tpnzary34q
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     transitivePeerDependencies:
@@ -5246,12 +5251,12 @@ packages:
       react: '*'
       react-dom: '*'
     dependencies:
-      next: 13.2.1_6m24vuloj5ihw4zc5lbsktc4fu
+      next: 13.2.1_4pgn6omj4irpgog4tpnzary34q
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /next/13.2.1_6m24vuloj5ihw4zc5lbsktc4fu:
+  /next/13.2.1_4pgn6omj4irpgog4tpnzary34q:
     resolution: {integrity: sha512-qhgJlDtG0xidNViJUPeQHLGJJoT4zDj/El7fP3D3OzpxJDUfxsm16cK4WTMyvSX1ciIfAq05u+0HqFAa+VJ+Hg==}
     engines: {node: '>=14.6.0'}
     hasBin: true
@@ -5278,6 +5283,7 @@ packages:
       postcss: 8.4.14
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+      sass: 1.58.3
       styled-jsx: 5.1.1_q2tyk3gci27qk4qoatek53e4vi
     optionalDependencies:
       '@next/swc-android-arm-eabi': 13.2.1
@@ -5937,6 +5943,15 @@ packages:
       call-bind: 1.0.2
       get-intrinsic: 1.2.0
       is-regex: 1.1.4
+
+  /sass/1.58.3:
+    resolution: {integrity: sha512-Q7RaEtYf6BflYrQ+buPudKR26/lH+10EmO9bBqbmPh/KeLqv8bjpTNqxe71ocONqXq+jYiCbpPUmQMS+JJPk4A==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.2.4
+      source-map-js: 1.0.2
 
   /scheduler/0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
