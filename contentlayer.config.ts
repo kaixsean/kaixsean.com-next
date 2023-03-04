@@ -1,5 +1,6 @@
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
+import rehypeSlug from 'rehype-slug';
 
 import { defineDocumentType, makeSource } from './src/lib/contentLayerAdapter';
 
@@ -40,6 +41,11 @@ export default makeSource({
   contentDirPath: 'content',
   documentTypes: [Post],
   mdx: {
-    rehypePlugins: [rehypeCodeTitles, [rehypePrism, { ignoreMissing: true }]],
+    rehypePlugins: [
+      // 加入 rehypeSlug
+      rehypeSlug, // For generating slugs for headings
+      rehypeCodeTitles, // For adding titles to code blocks
+      [rehypePrism, { ignoreMissing: true }], // For code syntax highlighting
+    ],
   },
 });
