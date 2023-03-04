@@ -3,8 +3,8 @@ import { GetStaticProps } from 'next';
 import { ArticleJsonLd } from 'next-seo';
 
 import PostList, { PostForPostList } from '@/components/PostList';
-import { siteConfigs } from "@/configs/siteConfigs";
-import { allPostsNewToOld } from "@/lib/contentLayerAdapter";
+import { siteConfigs } from '@/configs/siteConfigs';
+import { allPostsNewToOld } from '@/lib/contentLayerAdapter';
 
 type PostForIndexPage = PostForPostList;
 

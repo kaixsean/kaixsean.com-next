@@ -25,7 +25,7 @@ export const Post = defineDocumentType(() => ({
       required: true,
     },
     socialImage: {
-      type: "string",
+      type: 'string',
     },
   },
   computedFields: {
