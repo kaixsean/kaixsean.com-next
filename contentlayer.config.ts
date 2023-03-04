@@ -1,9 +1,9 @@
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrism from 'rehype-prism-plus';
 import rehypeSlug from 'rehype-slug';
-import imageMetadata from './src/plugins/imageMetadata';
 
 import { defineDocumentType, makeSource } from './src/lib/contentLayerAdapter';
+import imageMetadata from './src/plugins/imageMetadata';
 
 export const Post = defineDocumentType(() => ({
   name: 'Post',

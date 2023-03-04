@@ -1,4 +1,4 @@
-import Image, { ImageProps } from "next/image";
+import Image, { ImageProps } from 'next/image';
 
 type Props = ImageProps & { base64?: string };
 
@@ -11,7 +11,7 @@ export default function CustomImage({
   ...otherProps
 }: Props) {
   if (!src) return null;
-  if (typeof src === "string" && (!height || !width)) {
+  if (typeof src === 'string' && (!height || !width)) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img src={src} height={height} width={width} alt={alt} {...otherProps} />
@@ -25,7 +25,7 @@ export default function CustomImage({
       height={height}
       width={width}
       sizes="(min-width: 40em) 40em, 100vw"
-      placeholder={base64 ? "blur" : "empty"}
+      placeholder={base64 ? 'blur' : 'empty'}
       blurDataURL={base64}
       {...otherProps}
     />
