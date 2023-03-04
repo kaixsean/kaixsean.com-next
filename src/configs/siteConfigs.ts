@@ -15,4 +15,6 @@ export const siteConfigs = {
   bannerUrl: fqdn + bannerPath,
   twitterID: '@EasonChang_me',
   datePublished: '2022-09-01',
+  credit: 'Stark Industries',
+  email: 'stark@example.com',
 };
