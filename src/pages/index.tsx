@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
-import ThemeSwitch from "@/components/ThemeSwitch";
+import ThemeSwitch from '@/components/ThemeSwitch';
 import { allPostsNewToOld, Post } from '@/lib/contentLayerAdapter';
 
 export function getStaticProps() {
