@@ -1,4 +1,4 @@
-import { withContentlayer } from "next-contentlayer";
+import { withContentlayer } from 'next-contentlayer';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withContentlayer({
@@ -10,7 +10,7 @@ const nextConfig = withContentlayer({
   webpack: (config) => {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ["@svgr/webpack"],
+      use: ['@svgr/webpack'],
     });
     return config;
   },
@@ -25,6 +25,10 @@ const nextConfig = withContentlayer({
     // Dangerously allow production builds to successfully complete even if
     // your project has type errors.
     ignoreBuildErrors: true,
+  },
+  images: {
+    // Enable modern image formats
+    formats: ['image/avif', 'image/webp'],
   },
 });
 
