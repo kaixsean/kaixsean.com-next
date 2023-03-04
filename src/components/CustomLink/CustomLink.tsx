@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import Link from 'next/link';
 
-import ExternalLinkIcon from "./external-link.svg";
+import ExternalLinkIcon from './external-link.svg';
 
 type Props = React.ComponentPropsWithoutRef<'a'>;
 
