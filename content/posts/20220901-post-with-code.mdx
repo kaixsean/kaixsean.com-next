@@ -5,17 +5,16 @@ slug: post-with-code
 date: 2022-09-01
 type: Post
 ---
-
 ## Some post with code!
 
 Some other posts! with `some inline code`!
 
-```js
+```js:sample.js showLineNumbers
 const a = 1;
 a = 2;
 ```
 
-```tsx
+```tsx:App.tsx showLineNumbers {5,15-17}
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Head from "next/head";
@@ -36,30 +35,13 @@ function MyApp({ Component, pageProps }: AppProps) {
 export default MyApp;
 ```
 
-```shell
+```diff-js:some.js showLineNumbers {3-4}
+const a = 1;
+- a = 2;
++ a = 2;
+a = 3;
+```
+
+```shell:Command
 $ echo "Hello world!"
-```
-
-```python
-print("Hello world!")
-```
-
-```java
-System.out.println("Hello world!");
-```
-
-```csharp
-Console.WriteLine("Hello world!");
-```
-
-```c
-printf("Hello world!");
-```
-
-```cpp
-std::cout << "Hello world!";
-```
-
-```go
-fmt.Println("Hello world!")
 ```
