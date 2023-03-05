@@ -1,15 +1,32 @@
 import '@/styles/globals.css';
 import '@/styles/prism-one-dark.css';
 import '@/styles/prism-plus.css';
+import "nprogress/nprogress.css";
+import "@/styles/nprogress-custom.scss";
 
 import type { AppProps } from 'next/app';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
+import { useRouter } from "next/router";
+import NProgress from "nprogress";
+import { useEffect } from "react";
 
 import LayoutWrapper from '@/components/LayoutWrapper';
 import { siteConfigs } from '@/configs/siteConfigs';
 
+NProgress.configure({ showSpinner: false });
+
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  // Integrate nprogress
+  useEffect(() => {
+    router.events.on("routeChangeStart", () => NProgress.start());
+    router.events.on("routeChangeComplete", () => NProgress.done());
+    router.events.on("routeChangeError", () => NProgress.done());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <ThemeProvider attribute="class">
       <DefaultSeo
