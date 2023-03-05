@@ -11,6 +11,7 @@ import { ThemeProvider } from 'next-themes';
 import NProgress from 'nprogress';
 import { useEffect } from 'react';
 
+import CommandPalette from '@/components/CommandPalette';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import { siteConfigs } from '@/configs/siteConfigs';
 
@@ -74,9 +75,11 @@ export default function App({ Component, pageProps }: AppProps) {
           },
         ]}
       />
-      <LayoutWrapper>
-        <Component {...pageProps} />
-      </LayoutWrapper>
+      <CommandPalette>
+        <LayoutWrapper>
+          <Component {...pageProps} />
+        </LayoutWrapper>
+      </CommandPalette>
     </ThemeProvider>
   );
 }
