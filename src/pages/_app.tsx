@@ -1,15 +1,15 @@
 import '@/styles/globals.css';
 import '@/styles/prism-one-dark.css';
 import '@/styles/prism-plus.css';
-import "nprogress/nprogress.css";
-import "@/styles/nprogress-custom.scss";
+import 'nprogress/nprogress.css';
+import '@/styles/nprogress-custom.scss';
 
 import type { AppProps } from 'next/app';
+import { useRouter } from 'next/router';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
-import { useRouter } from "next/router";
-import NProgress from "nprogress";
-import { useEffect } from "react";
+import NProgress from 'nprogress';
+import { useEffect } from 'react';
 
 import LayoutWrapper from '@/components/LayoutWrapper';
 import { siteConfigs } from '@/configs/siteConfigs';
@@ -21,9 +21,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   // Integrate nprogress
   useEffect(() => {
-    router.events.on("routeChangeStart", () => NProgress.start());
-    router.events.on("routeChangeComplete", () => NProgress.done());
-    router.events.on("routeChangeError", () => NProgress.done());
+    router.events.on('routeChangeStart', () => NProgress.start());
+    router.events.on('routeChangeComplete', () => NProgress.done());
+    router.events.on('routeChangeError', () => NProgress.done());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
