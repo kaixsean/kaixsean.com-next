@@ -22,6 +22,7 @@
     "feed": "^4.2.2",
     "github-slugger": "^2.0.0",
     "image-size": "^1.0.2",
+    "kbar": "0.1.0-beta.40",
     "next": "13.2.1",
     "next-contentlayer": "^0.3.0",
     "next-seo": "^5.15.0",
