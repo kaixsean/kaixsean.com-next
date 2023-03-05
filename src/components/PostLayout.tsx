@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 
+import Comment from '@/components/Comment';
 import CustomLink from '@/components/CustomLink';
 import PageTitle from '@/components/PageTitle';
 import PostBody from '@/components/PostBody';
@@ -70,6 +71,9 @@ export default function PostLayout({
               <TableOfContents source={raw} />
             </div>
           </aside>
+        </div>
+        <div className="divide-y divide-gray-200 pb-8 transition-colors dark:divide-gray-700">
+          <Comment />
         </div>
 
         <div
