@@ -6,6 +6,7 @@ import '@/styles/nprogress-custom.scss';
 
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
+import { appWithTranslation } from 'next-i18next';
 import { DefaultSeo } from 'next-seo';
 import { ThemeProvider } from 'next-themes';
 import NProgress from 'nprogress';
@@ -15,9 +16,11 @@ import CommandPalette from '@/components/CommandPalette';
 import LayoutWrapper from '@/components/LayoutWrapper';
 import { siteConfigs } from '@/configs/siteConfigs';
 
+import nextI18nConfig from '../../next-i18next.config';
+
 NProgress.configure({ showSpinner: false });
 
-export default function App({ Component, pageProps }: AppProps) {
+function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   // Integrate nprogress
@@ -83,3 +86,7 @@ export default function App({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
+// Explicitly pass nextI18nConfig to suppress i18next console warning
+// `react-i18next:: You will need to pass in an i18next instance by using initReactI18next`
+// Ref: https://github.com/i18next/next-i18next/issues/718#issuecomment-1190468800
+export default appWithTranslation(App, nextI18nConfig);

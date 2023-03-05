@@ -1,4 +1,7 @@
 import { withContentlayer } from 'next-contentlayer';
+import i18nConfig from "./next-i18next.config.js";
+
+const { i18n } = i18nConfig;
 
 /** @type {import('next').NextConfig} */
 const nextConfig = withContentlayer({
@@ -30,6 +33,7 @@ const nextConfig = withContentlayer({
     // Enable modern image formats
     formats: ['image/avif', 'image/webp'],
   },
+  i18n,
 });
 
 export default nextConfig;
