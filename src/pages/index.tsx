@@ -1,5 +1,7 @@
 import type { NextPage } from 'next';
 import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ArticleJsonLd } from 'next-seo';
 
 import {
@@ -20,9 +22,10 @@ type Props = {
   commandPalettePosts: PostForCommandPalette[];
 };
 
-export const getStaticProps: GetStaticProps<Props> = () => {
-  const commandPalettePosts = getCommandPalettePosts();
+export const getStaticProps: GetStaticProps<Props> = async (context) => {
+  const locale = context.locale!;
 
+  const commandPalettePosts = getCommandPalettePosts();
   const posts = allPostsNewToOld.map((post) => ({
     slug: post.slug,
     date: post.date,
@@ -33,7 +36,13 @@ export const getStaticProps: GetStaticProps<Props> = () => {
 
   generateRSS();
 
-  return { props: { posts, commandPalettePosts } };
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['indexPage', 'common'])),
+      posts,
+      commandPalettePosts,
+    },
+  };
 };
 
 const Home: NextPage<Props> = ({ posts, commandPalettePosts }) => {

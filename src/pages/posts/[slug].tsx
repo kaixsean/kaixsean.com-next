@@ -1,6 +1,8 @@
 import type { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import { useMDXComponent } from 'next-contentlayer/hooks';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { ArticleJsonLd, NextSeo } from 'next-seo';
+import { ParsedUrlQuery } from 'querystring';
 
 import {
   getCommandPalettePosts,
@@ -12,6 +14,7 @@ import PostLayout, {
   PostForPostLayout,
   RelatedPostForPostLayout,
 } from '@/components/PostLayout';
+import { LOCALES } from '@/configs/i18nConfigs';
 import { siteConfigs } from '@/configs/siteConfigs';
 import { allPosts, allPostsNewToOld } from '@/lib/contentLayerAdapter';
 import { getPostOGImage } from '@/lib/getPostOGImage';
@@ -35,20 +38,29 @@ type Props = {
   commandPalettePosts: PostForCommandPalette[];
 };
 
+interface Params extends ParsedUrlQuery {
+  slug: string;
+}
+
 export const getStaticPaths: GetStaticPaths = () => {
-  const paths = allPosts.map((post) => post.path);
+  const paths: string[] = [];
+  LOCALES.forEach((locale) => {
+    paths.push(...allPosts.map((post) => `/${locale}${post.path}`));
+  });
   return {
     paths,
     fallback: false,
   };
 };
 
-export const getStaticProps: GetStaticProps<Props> = ({ params }) => {
+export const getStaticProps: GetStaticProps<Props, Params> = async (
+  context
+) => {
+  const { slug } = context.params!;
+  const locale = context.locale!;
   const commandPalettePosts = getCommandPalettePosts();
 
-  const postIndex = allPostsNewToOld.findIndex(
-    (post) => post.slug === params?.slug
-  );
+  const postIndex = allPostsNewToOld.findIndex((post) => post.slug === slug);
   if (postIndex === -1) {
     return {
       notFound: true,
@@ -82,6 +94,7 @@ export const getStaticProps: GetStaticProps<Props> = ({ params }) => {
   }
   return {
     props: {
+      ...(await serverSideTranslations(locale, ['common'])),
       post,
       prevPost,
       nextPost,
@@ -96,8 +109,6 @@ const PostPage: NextPage<Props> = ({
   nextPost,
   commandPalettePosts,
 }) => {
-  useCommandPalettePostActions(commandPalettePosts);
-
   const {
     description,
     title,
@@ -106,50 +117,50 @@ const PostPage: NextPage<Props> = ({
     socialImage,
     body: { code },
   } = post;
+  useCommandPalettePostActions(commandPalettePosts);
+
   const url = siteConfigs.fqdn + path;
   const ogImage = getPostOGImage(socialImage);
 
   const MDXContent = useMDXComponent(code);
 
   return (
-    <>
-      <LayoutPerPage>
-        <NextSeo
-          title={title}
-          description={description}
-          canonical={url}
-          openGraph={{
-            title: title,
-            description: description,
-            url: url,
-            images: [
-              {
-                url: ogImage,
-              },
-            ],
-            type: 'article',
-            article: {
-              publishedTime: date,
-              modifiedTime: date,
+    <LayoutPerPage>
+      <NextSeo
+        title={title}
+        description={description}
+        canonical={url}
+        openGraph={{
+          title: title,
+          description: description,
+          url: url,
+          images: [
+            {
+              url: ogImage,
             },
-          }}
-        />
+          ],
+          type: 'article',
+          article: {
+            publishedTime: date,
+            modifiedTime: date,
+          },
+        }}
+      />
 
-        <ArticleJsonLd
-          url={url}
-          title={title}
-          images={[ogImage]}
-          datePublished={date}
-          dateModified={date}
-          authorName={siteConfigs.author}
-          description={description}
-        />
+      <ArticleJsonLd
+        url={url}
+        title={title}
+        images={[ogImage]}
+        datePublished={date}
+        dateModified={date}
+        authorName={siteConfigs.author}
+        description={description}
+      />
 
-        <PostLayout post={post} prevPost={prevPost} nextPost={nextPost}>
-          <MDXContent components={mdxComponents} />
-        </PostLayout>
-      </LayoutPerPage>
-    </>
+      <PostLayout post={post} prevPost={prevPost} nextPost={nextPost}>
+        <MDXContent components={mdxComponents} />
+      </PostLayout>
+    </LayoutPerPage>
   );
 };
 
