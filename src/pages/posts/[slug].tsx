@@ -7,6 +7,7 @@ import {
   PostForCommandPalette,
 } from '@/components/CommandPalette/getCommandPalettePosts';
 import { useCommandPalettePostActions } from '@/components/CommandPalette/useCommandPalettePostActions';
+import LayoutPerPage from '@/components/LayoutPerPage';
 import PostLayout, {
   PostForPostLayout,
   RelatedPostForPostLayout,
@@ -112,40 +113,42 @@ const PostPage: NextPage<Props> = ({
 
   return (
     <>
-      <NextSeo
-        title={title}
-        description={description}
-        canonical={url}
-        openGraph={{
-          title: title,
-          description: description,
-          url: url,
-          images: [
-            {
-              url: ogImage,
+      <LayoutPerPage>
+        <NextSeo
+          title={title}
+          description={description}
+          canonical={url}
+          openGraph={{
+            title: title,
+            description: description,
+            url: url,
+            images: [
+              {
+                url: ogImage,
+              },
+            ],
+            type: 'article',
+            article: {
+              publishedTime: date,
+              modifiedTime: date,
             },
-          ],
-          type: 'article',
-          article: {
-            publishedTime: date,
-            modifiedTime: date,
-          },
-        }}
-      />
+          }}
+        />
 
-      <ArticleJsonLd
-        url={url}
-        title={title}
-        images={[ogImage]}
-        datePublished={date}
-        dateModified={date}
-        authorName={siteConfigs.author}
-        description={description}
-      />
+        <ArticleJsonLd
+          url={url}
+          title={title}
+          images={[ogImage]}
+          datePublished={date}
+          dateModified={date}
+          authorName={siteConfigs.author}
+          description={description}
+        />
 
-      <PostLayout post={post} prevPost={prevPost} nextPost={nextPost}>
-        <MDXContent components={mdxComponents} />
-      </PostLayout>
+        <PostLayout post={post} prevPost={prevPost} nextPost={nextPost}>
+          <MDXContent components={mdxComponents} />
+        </PostLayout>
+      </LayoutPerPage>
     </>
   );
 };
