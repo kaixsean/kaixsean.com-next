@@ -46,6 +46,8 @@ export const getStaticProps: GetStaticProps<Props> = async (context) => {
 };
 
 const Home: NextPage<Props> = ({ posts, commandPalettePosts }) => {
+  const { t } = useTranslation(['indexPage', 'common']);
+
   useCommandPalettePostActions(commandPalettePosts);
 
   return (
