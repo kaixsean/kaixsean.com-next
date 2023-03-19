@@ -3,11 +3,11 @@
 
 import {
   HomeIcon,
+  LanguageIcon,
   LightBulbIcon,
   MagnifyingGlassIcon,
   MoonIcon,
   SunIcon,
-  LanguageIcon,
 } from '@heroicons/react/24/outline';
 import {
   ActionId,

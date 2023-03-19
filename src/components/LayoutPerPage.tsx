@@ -1,4 +1,4 @@
-import { useCommandPaletteLocaleActions } from "@/components/CommandPalette/useCommandPaletteLocaleActions";
+import { useCommandPaletteLocaleActions } from '@/components/CommandPalette/useCommandPaletteLocaleActions';
 
 type Props = {
   children: React.ReactNode;
