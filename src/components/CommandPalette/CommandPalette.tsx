@@ -79,7 +79,7 @@ export default function CommandPalette({ children }: Props) {
     },
     {
       id: 'theme-dark',
-      name: '暗黑模式',
+      name: t('dark-mode'),
       keywords: 'theme dark black mode color 顏色 主題 模式 暗黑 黑色 深夜',
       perform: () => setTheme('dark'),
       icon: <MoonIcon className="h-6 w-6" />,
@@ -191,7 +191,7 @@ const ResultItem = forwardRef<Ref, ResultItemProps>(
                 ancestors.map((ancestor) => (
                   <React.Fragment key={ancestor.id}>
                     <span className="mr-3 opacity-70">{ancestor.name}</span>
-                    <span className="mr-3">›</span>
+                    <span className="mr-3">&rsaquo;</span>
                   </React.Fragment>
                 ))}
               <span>{action.name}</span>
