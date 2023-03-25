@@ -60,6 +60,7 @@ export default function PostLayout({
             </dl>
           </div>
         </header>
+
         <div
           className="pb-8 transition-colors lg:grid lg:grid-cols-4 lg:gap-x-6"
           style={{ gridTemplateRows: 'auto 1fr' }}
@@ -68,20 +69,17 @@ export default function PostLayout({
             <PostBody>{children}</PostBody>
           </div>
 
+          {/* DESKTOP TABLE OF CONTENTS */}
           <aside>
             <div className="hidden lg:sticky lg:top-24 lg:col-span-1 lg:block">
               <TableOfContents source={raw} />
             </div>
           </aside>
         </div>
+
         <div className="divide-y divide-gray-200 pb-8 transition-colors dark:divide-gray-700">
           <Comment />
-        </div>
 
-        <div
-          className="divide-y divide-gray-200 pb-8 transition-colors dark:divide-gray-700"
-          // style={{ gridTemplateRows: 'auto 1fr' }}
-        >
           <footer>
             <div className="flex flex-col gap-4 pt-4 text-base font-medium sm:flex-row sm:justify-between xl:gap-8 xl:pt-8">
               {prevPost ? (
@@ -93,7 +91,7 @@ export default function PostLayout({
                     href={prevPost.path}
                     className="text-primary-500 transition-colors hover:text-primary-600 dark:hover:text-primary-400"
                   >
-                    ← {prevPost.title}
+                    &larr; {prevPost.title}
                   </CustomLink>
                 </div>
               ) : (
@@ -108,7 +106,7 @@ export default function PostLayout({
                     href={nextPost.path}
                     className="block text-primary-500 transition-colors hover:text-primary-600 dark:hover:text-primary-400 sm:text-right"
                   >
-                    {nextPost.title} →
+                    {nextPost.title} &rarr;
                   </CustomLink>
                 </div>
               )}

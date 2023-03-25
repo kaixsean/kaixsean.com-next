@@ -51,34 +51,32 @@ const Home: NextPage<Props> = ({ posts, commandPalettePosts }) => {
   useCommandPalettePostActions(commandPalettePosts);
 
   return (
-    <div>
-      <LayoutPerPage>
-        <ArticleJsonLd
-          type="Blog"
-          url={siteConfigs.fqdn}
-          title={siteConfigs.title}
-          images={[siteConfigs.bannerUrl]}
-          datePublished={siteConfigs.datePublished}
-          authorName={siteConfigs.author}
-          description={siteConfigs.description}
-        />
+    <LayoutPerPage>
+      <ArticleJsonLd
+        type="Blog"
+        url={siteConfigs.fqdn}
+        title={siteConfigs.title}
+        images={[siteConfigs.bannerUrl]}
+        datePublished={siteConfigs.datePublished}
+        authorName={siteConfigs.author}
+        description={siteConfigs.description}
+      />
 
-        <div className="prose my-12 space-y-2 transition-colors dark:prose-dark md:prose-lg md:space-y-5">
-          <h1 className="text-center sm:text-left">{t('intro-title')}</h1>
-          <p>{t('intro-1')}</p>
-          <p>{t('intro-2')}</p>
-          <p>{t('intro-3')}</p>
+      <div className="prose my-12 space-y-2 transition-colors dark:prose-dark md:prose-lg md:space-y-5">
+        <h1 className="text-center sm:text-left">{t('intro-title')}</h1>
+        <p>{t('intro-1')}</p>
+        <p>{t('intro-2')}</p>
+        <p>{t('intro-3')}</p>
+      </div>
+
+      <div className="my-4 divide-y divide-gray-200 transition-colors dark:divide-gray-700">
+        <div className="prose prose-lg my-8 dark:prose-dark">
+          <h2>{t('latest-posts')}</h2>
         </div>
 
-        <div className="my-4 divide-y divide-gray-200 transition-colors dark:divide-gray-700">
-          <div className="prose prose-lg my-8 dark:prose-dark">
-            <h2>{t('latest-posts')}</h2>
-          </div>
-
-          <PostList posts={posts} />
-        </div>
-      </LayoutPerPage>
-    </div>
+        <PostList posts={posts} />
+      </div>
+    </LayoutPerPage>
   );
 };
 
