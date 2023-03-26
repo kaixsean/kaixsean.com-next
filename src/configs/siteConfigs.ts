@@ -1,20 +1,20 @@
-const fqdn = 'https://nextjs-tailwind-contentlayer-blog-starter.vercel.app';
+const fqdn = 'https://kaixsean.com/';
 const logoPath = '/logo.png';
 const bannerPath = '/og-image.png';
 
 export const siteConfigs = {
-  title: 'Next.js Tailwind Contentlayer Blog Starter',
-  titleShort: 'Next Blog',
+  title: 'Kaixiang',
+  titleShort: 'Kaixiang',
   description:
-    'Blog starter template with modern frontend technologies like Next.js, Tailwind CSS, Contentlayer, i18Next',
-  author: 'Tony Stark',
+    'This is Kaixiang\'s personal website, includes travel log, technology, thought, and dev experience',
+  author: 'Kaixiang',
   fqdn: fqdn,
   logoPath: logoPath,
   logoUrl: fqdn + logoPath,
   bannerPath: bannerPath,
   bannerUrl: fqdn + bannerPath,
-  twitterID: '@EasonChang_me',
-  datePublished: '2022-09-01',
-  credit: 'Stark Industries',
-  email: 'stark@example.com',
+  twitterID: '@kaixsean',
+  datePublished: '2023-03-26',
+  credit: 'kaixsean.com',
+  email: 'kxakai@gmail.com',
 };
