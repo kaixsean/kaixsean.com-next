@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next';
+import Script from 'next/script';
 
 import CommandPaletteToggle from '@/components/CommandPaletteToggle';
 import CustomLink from '@/components/CustomLink';
@@ -43,6 +44,21 @@ export default function Header() {
           </div>
         </div>
       </SectionContainer>
+      <div className="container">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-BSQNFNY4X2"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){window.dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'G-BSQNFNY4X2');
+              `}
+        </Script>
+      </div>
     </header>
   );
 }
